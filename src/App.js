@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import {useSelector, useDispatch} from 'react-redux';
 import {increment,decrement,login, addToDataList} from './actions';
+import DataForm from './components/dataform'
 import './App.css';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       <button onClick={() => dispatch(login())}>Sign in</button>
       {isLogged ? <h3>Sensitive info</h3> : ''}
       <br/>
-      <button onClick={() => dispatch(addToDataList('test'))}>Add data</button>
+      <DataForm/>
       <ul>{listItems}</ul>
     </div>
   );
