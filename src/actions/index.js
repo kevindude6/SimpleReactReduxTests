@@ -15,3 +15,9 @@ export const login = () =>{
     type: 'SIGN_IN'
   };
 }
+export const addToDataList = (data) => {
+  return {
+    type: 'ADD_DATA',
+    payload: data
+  };
+}

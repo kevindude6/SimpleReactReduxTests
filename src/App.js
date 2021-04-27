@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import {useSelector, useDispatch} from 'react-redux';
-import {increment,decrement,login} from './actions';
+import {increment,decrement,login, addToDataList} from './actions';
 import './App.css';
 
 function App() {
   const counter = useSelector(state => state.counter);
   const isLogged = useSelector(state => state.isLogged);
+  const list = useSelector(state => state.dataList);
+  const listItems = list.map((listitem, idx) => {
+    return <li key={idx}>{listitem}</li>;
+  });
   const dispatch = useDispatch();
   return (
     <div className="App">
@@ -14,6 +18,9 @@ function App() {
       <button onClick={() => dispatch(decrement(2))}>-</button>
       <button onClick={() => dispatch(login())}>Sign in</button>
       {isLogged ? <h3>Sensitive info</h3> : ''}
+      <br/>
+      <button onClick={() => dispatch(addToDataList('test'))}>Add data</button>
+      <ul>{listItems}</ul>
     </div>
   );
 }
